@@ -1,25 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+	const [error, setError] = useState(false);
+	let msgColor;
+
+	if (error) {
+		msgColor = 'red';
+	}
+	else {
+		msgColor = 'green';
+	}
+
+	console.log(msgColor);
+	return (
+		<main className="full-screen-container">
+			<div className="login-container">
+				<h1 className='title'>Welcome</h1>
+				<form className='form'>
+					<div className="input-group">
+						<label for='email'>Email</label>
+						<input type='emial' name='email' id='email' placeholder='abc@gamil.com' />
+						<span className={`msg ${msgColor}`}>Valid msg</span>
+					</div>
+					<div className="input-group">
+						<label for='password'>Password</label>
+						<input type='password' name='password' id='password' />
+						<span className={`msg ${msgColor}`}>Valid msg</span>
+					</div>
+					<button type='submit' className='login-btn'>Login</button>
+				</form>
+			</div>
+		</main>
+	);
 }
 
 export default App;
